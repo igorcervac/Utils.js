@@ -29,25 +29,46 @@ String.prototype.capitalize = function(){
     return this.toString();
 }
 
-function parseBoolean(stringValue){
-    if (!(stringValue === undefined || stringValue === null || typeof stringValue === 'string')){
-        throw new TypeError('invalid argument');
-    }
+const ut = {
 
-    let result;
-    try {
-        result = JSON.parse((stringValue || 'false').toLowerCase());
-
-        if (typeof result === 'number'){
-            result = result > 0;
+    parseBoolean(stringValue){
+        if (!(stringValue === undefined || stringValue === null || typeof stringValue === 'string')){
+            throw new TypeError('invalid argument');
         }
-    }
-    catch{
-        result = false;
-    }
-
-    return result;
+    
+        let result;
+        try {
+            result = JSON.parse((stringValue || 'false').toLowerCase());
+    
+            if (typeof result === 'number'){
+                result = result > 0;
+            }
+        }
+        catch{
+            result = false;
+        }
+    
+        return result;
+    },
+    
+    memoize(func){
+        const cache = {};
+    
+        return function(...args){
+            const key = JSON.stringify(args);
+    
+            if (key in cache){
+                result = cache[key];
+            }
+            else {
+                result = func.apply(this, args);
+                cache[key] = result;
+            }
+    
+            return result;
+        }
+    }    
 }
 
-module.exports = {parseBoolean};
+module.exports = ut;
 
