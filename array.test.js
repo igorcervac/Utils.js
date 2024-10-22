@@ -12,4 +12,8 @@ describe('array', () => {
     test('Random', () => {
         expect([1,2,3,5]).toContain([1,2,3,5].random());
     });
+
+    test('Random for empty array returns null', () => {
+        expect([].random()).toBe(null);
+    });
 });
