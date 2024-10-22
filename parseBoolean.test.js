@@ -32,4 +32,8 @@ describe('parseBoolean', () => {
     test("parseBoolean parses '0' as false", () => {
         expect(ut.parseBoolean('0')).toBe(false);
     });
+
+    test("parseBoolean parses 'string' as false", () => {
+        expect(ut.parseBoolean('string')).toBe(false);
+    });
 })

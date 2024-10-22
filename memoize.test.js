@@ -8,5 +8,5 @@ describe('memoize tests', () => {
 
     test('memoize parseBoolean false result', () => {
         expect(ut.memoize(ut.parseBoolean)('false')).toBe(false);
-    }); 
+    });
 });
