@@ -6,13 +6,13 @@ Array.prototype.unique = function() {
         return a;
     }, []);
     return array;
-}
+};
 
 Array.prototype.insert = function(index, value) {
     const array_part = this.slice(0, index);
     const array_part2 = this.slice(index);
     return [...array_part, value, ...array_part2];
-}
+};
 
 Array.prototype.random = function(){
     if (this.length > 0){
@@ -20,14 +20,14 @@ Array.prototype.random = function(){
         return this[index];
     }
     return null;
-}
+};
 
 String.prototype.capitalize = function(){
     if (this.length > 0){
         return this.charAt(0).toUpperCase() + this.slice(1);
     }
     return this.toString();
-}
+};
 
 const ut = {
 
@@ -66,9 +66,9 @@ const ut = {
             }
     
             return result;
-        }
+        };
     }    
-}
+};
 
 module.exports = ut;
 
